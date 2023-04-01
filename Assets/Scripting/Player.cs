@@ -6,6 +6,10 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private int movementLength = 1;
+    [SerializeField]
+    private int maxHunger = 15;
+
+    private float hunger;
 
     private bool restrictMovement;
 
@@ -15,10 +19,26 @@ public class Player : MonoBehaviour
         {
             Death();
         }
+
+        if (other.gameObject.tag == "Food")
+        {
+            hunger = Mathf.Min(hunger + 10.0f, maxHunger);
+            Destroy(other.gameObject);
+        }
+    }
+
+    void Start()
+    {
+        hunger = maxHunger;
     }
 
     void Update()
     {
+        if (hunger <= 0)
+        {
+            Death();
+        }
+
         if (restrictMovement != true)
         {
             if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
@@ -54,7 +74,8 @@ public class Player : MonoBehaviour
                 Invoke("Fall", Time.fixedDeltaTime * (movementLength + 1));
             }
         }
-
+        
+        hunger -= Time.deltaTime;
     }
 
     void Death()
