@@ -14,8 +14,8 @@ public class IceRandomizer : MonoBehaviour
     public void StartingProcedure()
     {
         GetIceGroups();
-        SpawnNewGroup(new Vector3(0, 0, 25));
-        SpawnNewGroup(new Vector3(0, 0, 50));
+        SpawnNewGroup(new Vector3(0, -1, 25));
+        SpawnNewGroup(new Vector3(0, -1, 50));
     }
 
     public void GetIceGroups()
