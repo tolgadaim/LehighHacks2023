@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scroller : MonoBehaviour
 {
     [SerializeField]
-    private bool isActive = true;
+    public bool IsActive = true;
     [SerializeField] [Tooltip ("Meters per second")]
     public float ScrollSpeed = 1;
 
@@ -22,7 +22,7 @@ public class Scroller : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isActive) {
+        if (IsActive) {
             foreach(Transform childTransform in GetComponentsInChildren<Transform>())
             {
                 if (childTransform == transform)
@@ -34,14 +34,14 @@ public class Scroller : MonoBehaviour
                 childTransform.localPosition += new Vector3(0, 0, -ScrollSpeed * Time.fixedDeltaTime);
             }
             TotalScrolled += ScrollSpeed * Time.fixedDeltaTime;
-        }
 
-        if (TotalScrolled >= 25 * (PlatformsSpawned - 1))
-        {
-            Debug.Log("Spawned Ice");
-            if (GetComponent<IceRandomizer>() != null)
-            GetComponent<IceRandomizer>().SpawnNewGroup(new Vector3(0, 0, 50));
-            PlatformsSpawned++;
+            if (TotalScrolled >= 25 * (PlatformsSpawned - 1))
+            {
+                Debug.Log("Spawned Ice");
+                if (GetComponent<IceRandomizer>() != null)
+                GetComponent<IceRandomizer>().SpawnNewGroup(new Vector3(0, 0, 50));
+                PlatformsSpawned++;
+            }
         }
     }
 }

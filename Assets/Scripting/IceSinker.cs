@@ -5,6 +5,8 @@ using UnityEngine;
 public class IceSinker : MonoBehaviour
 {
     [SerializeField]
+    public bool IsActive = true;
+    [SerializeField]
     private float zPosSinkingPoint = -20.0f;
     [SerializeField]
     private float minYPoint = -5.0f;
@@ -14,6 +16,9 @@ public class IceSinker : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!IsActive)
+            return;
+        
         foreach (GameObject iceObject in GameObject.FindGameObjectsWithTag("Ice")) {
 
             if (iceObject.transform.IsChildOf(transform) == false)

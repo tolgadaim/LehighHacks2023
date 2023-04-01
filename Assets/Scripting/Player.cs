@@ -1,13 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private int movementLength = 1;
+    [SerializeField]
+    private int maxHunger = 15;
+    [SerializeField]
+    private Image hungerBar;
+    [SerializeField]
+    private Transform questions;
 
-    private bool restrictMovement;
+    private float hunger;
+    public bool RestrictMovement;
 
     void OnTriggerEnter(Collider other)
     {
@@ -15,11 +21,35 @@ public class Player : MonoBehaviour
         {
             Death();
         }
+
+        if (other.gameObject.tag == "Food")
+        {
+            ActivateQuestion();
+            Destroy(other.gameObject);
+        }
+    }
+
+    void Start()
+    {
+        hunger = maxHunger;
     }
 
     void Update()
     {
-        if (restrictMovement != true)
+        if (GameObject.FindObjectOfType<TimeManager>().CheckPaused() == true)
+            return;
+            
+        if (hungerBar != null)
+        {
+            hungerBar.fillAmount = Mathf.Max(0, hunger / maxHunger);
+        }
+
+        if (hunger <= 0)
+        {
+            Death();
+        }
+
+        if (RestrictMovement != true)
         {
             if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
             {
@@ -54,13 +84,32 @@ public class Player : MonoBehaviour
                 Invoke("Fall", Time.fixedDeltaTime * (movementLength + 1));
             }
         }
+        
+        hunger -= Time.deltaTime;
+    }
 
+    void ActivateQuestion()
+    {
+        GameObject[] children = new GameObject[questions.childCount];
+        for (int i = 0; i < questions.childCount; i++)
+        {
+            children[i] = questions.GetChild(i).gameObject;
+        }
+        
+        int randomIndex = Random.Range(0, children.Length);
+        children[randomIndex].SetActive(true);
+        GameObject.FindObjectOfType<TimeManager>().PauseTime();
+    }
+
+    public void EatFish()
+    {
+        hunger = Mathf.Min(hunger + 10.0f, maxHunger);
     }
 
     void Death()
     {
         Debug.Log("Polar Bear Died");
-        restrictMovement = true;
+        RestrictMovement = true;
     }
 
     void MoveUp()
@@ -90,12 +139,13 @@ public class Player : MonoBehaviour
     void Jump()
     {
         transform.localPosition += new Vector3(0, 0.5f, 0);
-        restrictMovement = true;
+        RestrictMovement = true;
     }
 
     void Fall()
     {
         transform.localPosition += new Vector3(0, -0.5f, 0);
-        restrictMovement = false;
+        if (GameObject.FindObjectOfType<TimeManager>().CheckPaused() == false)
+            RestrictMovement = false;
     }
 }
