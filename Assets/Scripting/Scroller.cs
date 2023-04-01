@@ -39,7 +39,7 @@ public class Scroller : MonoBehaviour
             {
                 Debug.Log("Spawned Ice");
                 if (GetComponent<IceRandomizer>() != null)
-                GetComponent<IceRandomizer>().SpawnNewGroup(new Vector3(0, 0, 50));
+                GetComponent<IceRandomizer>().SpawnNewGroup(new Vector3(0, -1, 50));
                 PlatformsSpawned++;
             }
         }

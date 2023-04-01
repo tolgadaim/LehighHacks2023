@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private Image hungerBar;
     [SerializeField]
     private Transform questions;
+    [SerializeField]
+    private bool useHunger;
 
     private float hunger;
     public bool RestrictMovement;
@@ -85,7 +87,8 @@ public class Player : MonoBehaviour
             }
         }
         
-        hunger -= Time.deltaTime;
+        if (useHunger)
+            hunger -= Time.deltaTime;
     }
 
     void ActivateQuestion()
