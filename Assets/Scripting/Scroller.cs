@@ -45,7 +45,7 @@ public class Scroller : MonoBehaviour
                 childTransform.localPosition += new Vector3(0, 0, -ScrollSpeed * Time.deltaTime);
             }
             TotalScrolled += ScrollSpeed * Time.deltaTime;
-            score.text = string.Format("{0:D2}", Mathf.RoundToInt(TotalScrolled));
+            score.text = string.Format("{0:D2}", Mathf.RoundToInt(TotalScrolled / 5));
 
             if (TimeUntilNextFish <= 0)
             {
