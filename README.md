@@ -19,7 +19,7 @@ Once the bear eats the fish, a question pops up, and upon a correct answer, the 
 When the clock hits 0 or when the polar bear falls into the melting glaciers the game ends.
 
 
-##Website
+## Website
 https://sites.google.com/lehigh.edu/polar-bear-crossing/home
 The website starts off on a home page that introduces the game and the pages of the website. The download page allows for the user download and includes instruction on how to play the game. The "What You Can Do Page explains why one should care for the wellbeing of polar bears as well as organizations one can donate to to alliviate the effects of climate change. The Google Maps page includes a customized and interactive Google Map that explains how climate change and sea level rising affects communities around the world and what one can do to help in these locations. Finally, the Tools page shows what tools used to create the website and game.
 
