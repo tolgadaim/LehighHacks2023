@@ -6,7 +6,7 @@ public class ItemDestroyManager : MonoBehaviour
 {
     void FixedUpdate()
     {
-        if (transform.position.y <= -10)
+        if (transform.position.y <= -10 || transform.position.z <= -25)
         {
             Destroy(gameObject);
         }

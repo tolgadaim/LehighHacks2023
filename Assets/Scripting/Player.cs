@@ -10,7 +10,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Image hungerBar;
     [SerializeField]
+    private Transform deathMenu;
+    [SerializeField]
     private Transform questions;
+    [SerializeField]
+    private bool useHunger;
 
     private float hunger;
     public bool RestrictMovement;
@@ -85,7 +89,8 @@ public class Player : MonoBehaviour
             }
         }
         
-        hunger -= Time.deltaTime;
+        if (useHunger)
+            hunger -= Time.deltaTime;
     }
 
     void ActivateQuestion()
@@ -108,8 +113,13 @@ public class Player : MonoBehaviour
 
     void Death()
     {
-        Debug.Log("Polar Bear Died");
-        RestrictMovement = true;
+        GameObject.FindObjectOfType<TimeManager>().PauseTime();
+        Invoke("DeathHelper", 1f);
+    }
+
+    void DeathHelper()
+    {
+        deathMenu.gameObject.SetActive(true);
     }
 
     void MoveUp()
