@@ -30,10 +30,11 @@ public class IceRandomizer : MonoBehaviour
         parentOfGroups.gameObject.SetActive(false);
     }
 
-    public void SpawnNewGroup(Vector3 position)
+    // Returns lastGroup as GameObject or null if unable to spawn
+    public GameObject SpawnNewGroup(Vector3 position)
     {
         if (IceGroups.Count == 0)
-            return;
+            return null;
 
         int randomGroupIndex = 0;
         while(true) {
@@ -54,5 +55,6 @@ public class IceRandomizer : MonoBehaviour
         var spawnedGroup = Instantiate(lastGroup, position, Quaternion.identity);
         spawnedGroup.SetActive(true);
         spawnedGroup.transform.parent = this.transform;
+        return lastGroup;
     }
 }

@@ -15,7 +15,7 @@ public class QuestionScript : MonoBehaviour
         {
             FindObjectOfType<Player>().EatFish();
         }
-        Invoke("ResetQuestion", 3f);
+        Invoke("ResetQuestion", 1f);
         return correct;
     }
 
