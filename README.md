@@ -27,8 +27,12 @@ The website starts off on a home page that introduces the game and the pages of 
 The information and statistics presented in Polar Bear Crossing are based on reputable sources, including the Intergovernmental Panel on Climate Change (IPCC) and the World Wildlife.
 
 "The Climate Reality Project." Climate Reality, 2021, https://www.climaterealityproject.org/.
+
 "Climate Change: Global Sea Level." NASA Global Climate Change, 2021, https://climate.nasa.gov/vital-signs/sea-level/.
+
 "Why Trees Matter." The Nature Conservancy, 2021, https://www.nature.org/en-us/about-us/why-forests-matter/why-trees-matter/.
+
 Google Earth Voyager - Warming Planet: https://earth.google.com/web/@61.05987082,-147.05927869,5a,22434d,35y,-23h,70t,0r/data=CjYSNBIgM2ZkOTk3YWI0Njk4MTFlYTlkZWUyZGUyNWIyYWZmNjkiEGNvbHVtYmlhLWdsYWNpZXI
+
 Google Earth Voyager - Sea Level Rise and the Fate of Coastal Cities: https://earth.google.com/web/@34.73255994,-94.20828255,312.18513075a,12000000d,35y,359.99999997h,0.00000987t,0r/data=CjASLhIgNzJlM2QwZWU3NGMyMTFlODhjMWNiZjg2OTQ1ZTVlZWMiCnZveV9zcGxhc2g
 
